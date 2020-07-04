@@ -12,6 +12,9 @@ gem 'sinatra-contrib'
 # Use http-party to manage the HTTP requests
 gem 'httparty'
 
+# This gem will allow us to create tasks which we can run with commands
+gem 'rake'
+
 group :test do
   gem 'rack-test'
   gem 'rspec'

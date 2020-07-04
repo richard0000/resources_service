@@ -1,0 +1,14 @@
+require '../processors/resource_processor'
+require '../gateways/credential_registry_gateway'
+
+namespace :resources do
+  task :fetch do
+    puts 'Initiating resources fetch...'
+
+    gateway = CredentialRegistryGateway.new
+    processor = ResourceProcessor.new({ gateway: gateway })
+    puts processor.fetch
+
+    puts 'Resources correctly fetched'
+  end
+end

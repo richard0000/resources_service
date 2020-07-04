@@ -1,19 +1,19 @@
 require 'sinatra'
 require 'sinatra/namespace'
-require_relative "processors/resource_processor"
-require_relative "gateways/credential_registry_gateway"
+require_relative 'processors/resource_processor'
+require_relative 'gateways/credential_registry_gateway'
 
 before do
   content_type :json
 end
 
 ###
-# @description: Root point of the application. Following HATEOAS, 
+# @description: Root point of the application. Following HATEOAS,
 #   we add hypermedia to the API to make it easier to follow
 # @see https://en.wikipedia.org/wiki/HATEOAS
 ###
 get '/' do
-  "Welcome! Try GET http://localhost:4567/api/v1/resources"
+  'Welcome! Try GET http://localhost:4567/api/v1/resources'
 end
 
 ###
@@ -22,7 +22,7 @@ end
 namespace '/api/v1' do
   get '/resources' do
     gateway = CredentialRegistryGateway.new
-    processor = ResourceProcessor.new({:gateway => gateway})
+    processor = ResourceProcessor.new({ gateway: gateway })
 
     processor.fetch
   end
