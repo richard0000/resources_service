@@ -12,6 +12,6 @@ describe "Resources Service" do
     get '/api/v1/resources'
     expect(last_response).to be_ok
     # String taken from the (CR resources public api endpoint)[https://staging.credentialengineregistry.org/envelopes]
-    expect(last_response).to start_with('[{"envelope_community":"ce_registry"')
+    expect(last_response.body).to include('envelope_community')
   end
 end
