@@ -5,10 +5,19 @@
 ### Description
 This is a microservice meant to list all the resources in (Credential Registry API)[https://staging.credentialengineregistry.org/envelopes].
 
-## Usage
+---
+
+## Usage (without docker)
 - Clone this project locally
 - Run `bundle install`
 - Run `ruby router.rb`
+- Make sure you have a redis instance running and available at port `6379`
+- Go to (localhost:4567)[http://localhost/4567] and you will have instructions at the root of the service
+
+## Usage (with docker)
+- Clone this project locally
+- Run `docker-compose build`
+- Run `docker-compose up`
 - Go to (localhost:4567)[http://localhost/4567] and you will have instructions at the root of the service
 
 > Additional note: you can enter the "tasks" directory and run `rake resources:fetch` to get all the resources listed
