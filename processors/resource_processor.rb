@@ -1,4 +1,6 @@
 require 'sinatra'
+require_relative "../providers/caching_service"
+
 ###
 # @description This class represents (as a sort of template method design pattern)
 #   a way to let this service servee resources from different sources.
@@ -14,6 +16,7 @@ class ResourceProcessor
     raise 'Must include a gateway in order to use ResourceProcessor' if params[:gateway].nil?
 
     @gateway = params[:gateway]
+    @caching_service = CachingService.new
   end
 
   ###
@@ -27,6 +30,20 @@ class ResourceProcessor
     #     we return that data.
     #   - If we don't have data in DB, then we fetch from gateway
     #   - And then return and maybe store to the DB in parallel or in a job
-    @gateway.fetch_all
+
+    # Return cached resources, if any
+    if !((resources = @caching_service.read("resources")).nil?)
+      return resources
+    end
+
+    # By now (see @todo above), only fecth from RC API when there's nothing in cache
+    resources = @gateway.fetch_all
+
+    # If we hit the RC API, let's write in cache to get quicker reults next request
+    # (between the next couple of minutes, before cache expires)
+    @caching_service.write("resources", resources)
+
+    # Return the resources fetched from the RC API
+    resources
   end
 end
