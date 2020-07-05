@@ -23,6 +23,7 @@ gem 'redis'
 # Let's schedule our tasks with 'whenever' gem
 gem 'whenever', require: false
 
+
 group :test do
   gem 'rack-test'
   gem 'rspec'
@@ -31,4 +32,7 @@ end
 group :development do
   # Let's take advantage of rerun gem for hot-reload in development
   gem 'rerun'
+
+  # Use yard to feed the documentation server
+  gem 'yard'
 end

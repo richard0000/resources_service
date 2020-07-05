@@ -13,3 +13,8 @@ redis:
   image: redis
   ports:
     - "6379"
+yard:
+  build: .
+  command: yard server --reload
+  ports:
+    - "8808:8808"

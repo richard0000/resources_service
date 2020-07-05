@@ -10,5 +10,7 @@ COPY Gemfile Gemfile.lock ./
 # Copy all the files from our current application to the /app 
 COPY . .
 
+EXPOSE 4567 8808
+
 # Install all the dependencies
 RUN bundle install

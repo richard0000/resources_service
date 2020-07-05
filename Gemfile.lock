@@ -79,6 +79,7 @@ GEM
     unicode-display_width (1.7.0)
     whenever (1.0.0)
       chronic (>= 0.6.3)
+    yard (0.9.25)
 
 PLATFORMS
   ruby
@@ -94,6 +95,7 @@ DEPENDENCIES
   sinatra
   sinatra-contrib
   whenever
+  yard
 
 BUNDLED WITH
    2.1.4

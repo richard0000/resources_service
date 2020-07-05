@@ -19,5 +19,6 @@ This is a microservice meant to list all the resources in (Credential Registry A
 - Run `docker-compose build`
 - Run `docker-compose up`
 - Go to (localhost:4567)[http://localhost/4567] and you will have instructions at the root of the service
+- In (localhost:8080)[http://localhost/8808] you will found the documentation server
 
 > Additional note: you can enter the "tasks" directory and run `rake resources:fetch` to get all the resources listed
