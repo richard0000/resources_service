@@ -15,6 +15,9 @@ gem 'httparty'
 # This gem will allow us to create tasks which we can run with commands
 gem 'rake'
 
+# Let's schedule our tasks with 'whenever' gem
+gem 'whenever', require: false
+
 group :test do
   gem 'rack-test'
   gem 'rspec'
