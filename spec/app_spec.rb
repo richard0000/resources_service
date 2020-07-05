@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # spec/app_spec.rb
 require File.expand_path '../spec_helper.rb', __FILE__
 
@@ -26,7 +28,7 @@ describe 'Decoder' do
   end
 end
 
-# Tests for a single resource (when it's already in the DB -not scoped 
+# Tests for a single resource (when it's already in the DB -not scoped
 # in this 8 hours work, but useful to have as a 'must include' test)
 describe 'Resource' do
   # Validate the most important field inside the JWT (when it's decoded)

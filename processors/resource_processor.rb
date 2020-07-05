@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 require 'sinatra'
-require_relative "../providers/caching_service"
+require_relative '../providers/caching_service'
 
 ###
 # @description This class represents (as a sort of template method design pattern)
@@ -12,7 +14,7 @@ class ResourceProcessor
   # @param [Hash] params The data this processor will use in order to work.
   #   Must include the gateway which will fetch the resources
   ###
-  def initialize params = {}
+  def initialize(params = {})
     raise 'Must include a gateway in order to use ResourceProcessor' if params[:gateway].nil?
 
     @gateway = params[:gateway]
@@ -32,7 +34,7 @@ class ResourceProcessor
     #   - And then return and maybe store to the DB in parallel or in a job
 
     # Return cached resources, if any
-    if !((resources = @caching_service.read("resources")).nil?)
+    unless (resources = @caching_service.read('resources')).nil?
       return resources
     end
 
@@ -41,7 +43,7 @@ class ResourceProcessor
 
     # If we hit the RC API, let's write in cache to get quicker reults next request
     # (between the next couple of minutes, before cache expires)
-    @caching_service.write("resources", resources)
+    @caching_service.write('resources', resources)
 
     # Return the resources fetched from the RC API
     resources

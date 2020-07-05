@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'json'
 
 ###
@@ -11,7 +13,7 @@ class ResourceDecoder
   # @description: Initilalize this resource decoder instance
   # @param [Hash] params
   ###
-  def initialize params = {}
+  def initialize(params = {})
     @resources_list = params[:resources_list]
   end
 
