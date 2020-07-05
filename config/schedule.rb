@@ -21,8 +21,8 @@
 
 # Let's fetch our resources every 1 hour to ensure validity of our data
 every 1.hour do
-    rake 'resources:fetch'
-    puts 'Task resources:fetch completed.'
+  rake 'resources:fetch'
+  puts 'Task resources:fetch completed.'
 end
 
 # Write the logs into a file
