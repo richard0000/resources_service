@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require '../processors/resource_processor'
 require '../gateways/credential_registry_gateway'
 

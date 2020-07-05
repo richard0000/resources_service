@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 require 'sinatra'
 require 'sinatra/namespace'
-require_relative 'processors/resource_processor'
-require_relative 'gateways/credential_registry_gateway'
+require_relative 'controllers/resources_controller'
 
 # Set 0.0.0.0 instead of 127.0.0.1 to make the service available outside the container
 set :bind, '0.0.0.0'
@@ -24,9 +25,6 @@ end
 ###
 namespace '/api/v1' do
   get '/resources' do
-    gateway = CredentialRegistryGateway.new
-    processor = ResourceProcessor.new({ gateway: gateway })
-
-    processor.fetch
+    ResourcesController.index
   end
 end

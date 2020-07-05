@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'sinatra'
 require 'httparty'
 require_relative '../providers/resource_decoder'
@@ -25,10 +27,10 @@ class CredentialRegistryGateway
       response = self.class.get(@endpoint)
 
       decoder = ResourceDecoder.new({ resources_list: JSON.parse(response.body) })
-      
+
       # Just pass the response as we can connect to RC API, as an MVP
       # @todo: before returning parse the response to decode, store in DB
-      return decoder.decode_resources
+      decoder.decode_resources
     rescue => e
       "An error has occurred \n DETAILS:\n #{e}"
     end

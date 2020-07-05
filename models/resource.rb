@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 ###
 # @description Represents the resource object. This class will have all the
 #   pertinent attributes related to a resource.
